@@ -1,3 +1,3 @@
 # to-do-list
-## visit site
+## Visit site
 https://haitam-skhairi.github.io/to-do-list/
