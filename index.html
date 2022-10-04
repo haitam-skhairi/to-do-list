@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="To do list">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            font-family: Verdana, Tahoma, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form .input {
+            width: 65%;
+            padding: 10px;
+            outline: none;
+        }
+
+        .form .add {
+            width: 30%;
+            padding: 10px;
+            outline: none;
+            background-color: #ffc400;
+            border: none;
+            border-radius: 6px;
+            color: rgb(60, 60, 60);
+            font-weight: bold;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .form .add:hover {
+            background-color: #cc9d01;
+        }
+
+        .tasks {
+            padding: 20px;
+            background-color: #eee;
+            margin-top: 20px;
+            border-radius: 10px;
+            min-height: 300px;
+        }
+
+        .tasks .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            background-color: white;
+        }
+
+        .tasks .task.done {
+            opacity: .5;
+        }
+
+        .tasks .task span.del {
+            background-color: red;
+            color: white;
+            padding: 5px;
+            min-width: 60px;
+            text-align: center;
+            margin: 5px;
+            border-radius: 5px;
+            user-select: none;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .tasks .empty {
+            position: absolute;
+            top: 51%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #666;
+        }
+
+        .del-prompt {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            min-height: 100vh;
+            z-index: 100;
+            background-color: rgb(0 0 0 / .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .del-prompt-container {
+            background-color: #eee;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .del-prompt-container-text {
+            padding-bottom: 15px;
+        }
+
+        .yes-delete,
+        .not-delete {
+            display: inline-block;
+            width: 45px;
+            text-align: center;
+            color: white;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .yes-delete {
+            background-color: red;
+        }
+
+        .not-delete {
+            background-color: green;
+        }
+
+        .clear {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            background-color: #333;
+            cursor: pointer;
+            color: white;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <input type="text" class="input">
+            <input type="submit" class="add" value="Add Task">
+        </div>
+        <div class="tasks">
+        </div>
+        <div class="clear">Clear</div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
