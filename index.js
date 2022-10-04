@@ -173,6 +173,7 @@ clearAll.addEventListener("click", (e) => {
       emptyTask();
     }
   });
+
   // not
   let notDelete = document.createElement("span");
   notDelete.appendChild(document.createTextNode("No"));
