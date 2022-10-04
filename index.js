@@ -4,8 +4,8 @@ let tasksDiv = document.querySelector(".tasks");
 let clearAll = document.querySelector(".clear");
 
 // Input Focused
-emptyTask();
 input.focus();
+emptyTask();
 
 // Empty Array Task
 let tasksArray = [];
@@ -43,7 +43,10 @@ tasksDiv.addEventListener("click", (e) => {
         e.target.parentElement.getAttribute("data-id")
       );
       prompt.remove();
-      emptyTask();
+      if (tasksDiv.innerHTML == "") {
+        location.reload();
+        emptyTask();
+      }
     });
     // not
     let notDelete = document.createElement("span");
@@ -114,6 +117,10 @@ function addTaskToPageFrom(tasksArray) {
     // Appende Main Task Div to Tasks Container
     tasksDiv.appendChild(div);
   });
+
+  if (tasksDiv.innerHTML == "") {
+    emptyTask();
+  }
 }
 
 // Add Tasks to Local Storage
@@ -138,6 +145,7 @@ function removeTaskfromLocalStorage(taskId) {
   addTaskstoLocalStorage(tasksArray);
 }
 
+// Clear All Tasks
 clearAll.addEventListener("click", (e) => {
   // Delete Prompt
   let prompt = document.createElement("div");
@@ -158,10 +166,12 @@ clearAll.addEventListener("click", (e) => {
   yesDelete.addEventListener("click", () => {
     tasksDiv.innerHTML = "";
     window.localStorage.clear();
-    location.reload();
-    input.focus();
     prompt.remove();
-    emptyTask();
+    input.focus();
+    if (tasksDiv.innerHTML == "") {
+      location.reload();
+      emptyTask();
+    }
   });
   // not
   let notDelete = document.createElement("span");
@@ -181,12 +191,12 @@ clearAll.addEventListener("click", (e) => {
 
 // Tasks div Empty
 function emptyTask() {
-  if (tasksDiv.innerHTML == "") {
-    let empty = document.createElement("div");
-    empty.className = "empty";
-    empty.appendChild(document.createTextNode("Empty"));
-    tasksDiv.appendChild(empty);
-  }
+  // if (tasksDiv.innerHTML === "") {
+  let empty = document.createElement("div");
+  empty.className = "empty";
+  empty.appendChild(document.createTextNode("Empty"));
+  tasksDiv.appendChild(empty);
+  // }
 }
 
 function toggleTaskStatusWith(taskId) {
